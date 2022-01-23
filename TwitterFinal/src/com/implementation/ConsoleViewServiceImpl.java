@@ -24,7 +24,7 @@ import java.util.Iterator;
  */
 public class ConsoleViewServiceImpl implements ConsoleViewService {
     public void terminalStart(File file) {
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
         if (file.length() != 0) {
             JsonArray result = null;
             try (JsonReader jsonReader = gson.newJsonReader(new FileReader(file))) {
@@ -51,6 +51,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
             }
         } else {
             System.err.println(" File is empty");
-        }
+        }*/
     }
+
 }
