@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.TweetController">
    <children>
       <MenuBar opacity="0.71" prefHeight="40.0" prefWidth="600.0">
          <menus>
@@ -45,14 +43,6 @@
       </MenuBar>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <BottomNavigation layoutY="338.0" prefHeight="40.0" prefWidth="600.0">
-               <actionItems>
-                  <BottomNavigationButton text="Profile" />
-                  <BottomNavigationButton text="TimeLine" />
-                  <BottomNavigationButton selected="true" text="Tweet" />
-                  <BottomNavigationButton text="Refresh" />
-               </actionItems>
-            </BottomNavigation>
             <Text layoutX="247.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tweet" textAlignment="CENTER" wrappingWidth="105.13671875">
                <font>
                   <Font size="22.0" />
@@ -60,11 +50,35 @@
             </Text>
             <AnchorPane layoutX="12.0" layoutY="5.0" prefHeight="303.0" prefWidth="575.0">
                <children>
-                  <TextField layoutX="23.0" layoutY="33.0" prefHeight="162.0" prefWidth="527.0" />
                   <Button layoutX="255.0" layoutY="214.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Send" />
-                  <TextArea editable="false" layoutX="23.0" layoutY="262.0" prefHeight="29.0" prefWidth="527.0" visible="false" />
+                  <TextArea layoutX="18.0" layoutY="32.0" prefHeight="170.0" prefWidth="538.0" />
+                  <Text layoutX="157.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="260.13671875" />
                </children>
             </AnchorPane>
+            <HBox layoutY="331.0" prefHeight="44.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="profileButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleProfileButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Profile">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="timelineButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTimelineButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Timeline">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tweetButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTweetButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Tweet">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="refreshButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleRefreshButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Refresh">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

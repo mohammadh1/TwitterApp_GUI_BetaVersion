@@ -107,7 +107,7 @@
       <recent name="C:\Users\moham_rcxh6mm\IdeaProjects\TwitterFinal\src\com\twitter\client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AppUI 2">
+  <component name="RunManager" selected="Application.AppUI">
     <configuration name="AppUI 2" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.twitter.client.AppUI" />
       <module name="TwitterFinal" />
@@ -118,6 +118,7 @@
     <configuration name="AppUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twitter.client.AppUI" />
       <module name="TwitterFinal" />
+      <option name="PROGRAM_PARAMETERS" value="username " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.twitter.client.*" />

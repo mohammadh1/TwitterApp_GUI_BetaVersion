@@ -46,9 +46,7 @@ public class LoginManager {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
             scene.setRoot((Parent) loader.load());
-            MainViewController controller =
-                    loader.getController();
-            controller.initSessionID(this, sessionID);
+            MainViewController controller = loader.getController();
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

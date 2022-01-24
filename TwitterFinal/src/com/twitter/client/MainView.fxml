@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.MainViewController">
    <children>
       <MenuBar opacity="0.71" prefHeight="40.0" prefWidth="600.0">
          <menus>
@@ -53,22 +53,22 @@
             </AnchorPane>
             <HBox layoutY="331.0" prefHeight="44.0" prefWidth="600.0">
                <children>
-                  <Button minWidth="0.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="150.0" text="Profile">
+                  <Button fx:id="profileButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleProfileButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Profile">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button minWidth="0.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="150.0" text="Timeline">
+                  <Button fx:id="timelineButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTimelineButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Timeline">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button minWidth="0.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="150.0" text="Tweet">
+                  <Button fx:id="tweetButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTweetButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Tweet">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button minWidth="0.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="150.0" text="Refresh">
+                  <Button fx:id="refreshButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleRefreshButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Refresh">
                      <font>
                         <Font size="14.0" />
                      </font>
