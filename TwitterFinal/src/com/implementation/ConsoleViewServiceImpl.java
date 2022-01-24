@@ -68,7 +68,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
             String method = jsonObj.get("method").getAsString();
             switch (method) {
                 case "login" -> login(file);
-                case "signup" -> signup();
+                case "signup" -> signup(file);
                 case "timeline" -> timeline();
                 case "showTweetsOf" -> showTweetOfPerson();
                 case "like" -> like();
@@ -102,8 +102,24 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
         }
         return flag;
     }
-    public Boolean signup(){
-        return true;
+    public Boolean signup(File file){
+        Boolean flag = true;
+        if (file.length() != 0) {
+            try (JsonReader jsonReader = gson.newJsonReader(new FileReader(file))) {
+                JsonObject jsonObj = gson.fromJson(jsonReader, JsonObject.class);
+                boolean errorState = jsonObj.get("hasError").getAsBoolean();
+                if (!errorState) {
+                    object = flag;
+                }
+                else {
+                    flag = false;
+                    object = flag;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return flag;
     }
     public ArrayList<Tweet> timeline(){
         return null;

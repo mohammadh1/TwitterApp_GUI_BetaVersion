@@ -59,9 +59,7 @@ public class CommandParserServiceImpl implements CommandParserService {
      *
      * objMethod = method of json request
      * value = array that contains value of json request
-     * @param objMethod method of json request
      * @param username username
-     * @param value array that contains value of json request
      * @param password password
      * @param firstName firstName
      * @param lastName lastName
@@ -69,11 +67,13 @@ public class CommandParserServiceImpl implements CommandParserService {
      * @param bio bio
      * @return name of request file
      */
-    public String signupLines(JSONObject objMethod, String username, JSONArray value, String password,
+    public String signupLines(String username, String password,
                              String firstName,
                              String lastName,
                              String birth,
                              String bio) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "signup");
         jsonObjectTemp.put("firstName", firstName);

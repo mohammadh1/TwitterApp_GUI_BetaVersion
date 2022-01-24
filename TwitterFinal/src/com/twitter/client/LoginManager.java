@@ -32,7 +32,7 @@ public class LoginManager {
 
     public void showLoginScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             scene.setRoot(loader.load());
             LoginController loginController =
                     loader.getController();
@@ -55,7 +55,7 @@ public class LoginManager {
     }
     public void showSignupScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
             scene.setRoot(loader.load());
             SignupController signupController =
                     loader.getController();

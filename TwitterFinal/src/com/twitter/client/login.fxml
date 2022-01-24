@@ -40,8 +40,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                                <TextField fx:id="user" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;open&quot; to login" text="mohammadh1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <TextField fx:id="password" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;sesame&quot; to login" text="Maha1379" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <TextField fx:id="usernameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Write username to login" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="passwordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Write password to login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="121.0" />

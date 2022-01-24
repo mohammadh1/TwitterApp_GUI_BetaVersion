@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface ConsoleViewService {
     //void terminalStart(File file);
     Boolean login(File file);
-    Boolean signup();
+    Boolean signup(File file);
     ArrayList<Tweet> timeline();
     ArrayList<Tweet> showTweetOfPerson();
     Boolean like();

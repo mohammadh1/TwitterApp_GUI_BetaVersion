@@ -10,3 +10,13 @@
 [done]mohammadh1-login successful
 [op]mohammadh1-attempt login
 [done]mohammadh1-login successful
+[op]rock-attempt signup
+[done]rock-signup successful
+[op]rock-attempt signup
+[error]rock-wrong inputs
+[op]rock-attempt signup
+[error]rock-wrong inputs
+[op]leo-attempt signup
+[done]leo-signup successful
+[op]leo-attempt login
+[done]leo-login successful
