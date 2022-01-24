@@ -236,7 +236,8 @@ public class RequestParserServiceImpl implements RequestParserService{
      * @param responseJsonObject json object that supposed to write on file
      * @param listOfResponses an arrayList that saves subObjects that supposed to write in result JsonArray
      */
-    private void errorAndResultSetter(Boolean hasError, int errorCode, JsonObject responseJsonObject, ArrayList<JsonObject> listOfResponses) {
+    private void errorAndResultSetter(String method,Boolean hasError, int errorCode, JsonObject responseJsonObject, ArrayList<JsonObject> listOfResponses) {
+        responseJsonObject.addProperty("method", method);
         responseJsonObject.addProperty("hasError", hasError);
         responseJsonObject.addProperty("errorCode", errorCode);
         JsonArray temp = new JsonArray();
@@ -279,7 +280,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         JsonObject stateOfSignup = new JsonObject();   // state of whether signup is successful or not
         stateOfSignup.addProperty("state", "done");
         listOfResponses.add(stateOfSignup);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("signup",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void loginLines(String username, JsonElement jsonElement, String password, FileWriter logWriter, boolean operationOfMethods, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         AuthenticationServiceImpl authenticationService = new AuthenticationServiceImpl();
@@ -310,7 +311,8 @@ public class RequestParserServiceImpl implements RequestParserService{
         JsonObject stateOfLogin = new JsonObject();   // state of whether login is executed or not
         stateOfLogin.addProperty("state", "done");
         listOfResponses.add(stateOfLogin);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+
+        errorAndResultSetter("login",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void sendTweetLines(String username, JsonElement jsonElement, String text, FileWriter logWriter, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TweetingServiceImpl tweetingService = new TweetingServiceImpl();
@@ -346,7 +348,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         stateOfTweeting.addProperty("state", "done");
         stateOfTweeting.addProperty("Tweet", text);
         listOfResponses.add(stateOfTweeting);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("sendTweet",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void deleteTweetLines(String username, JsonElement jsonElement, String text, FileWriter logWriter, Tweet tweet, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TweetingServiceImpl tweetingService = new TweetingServiceImpl();
@@ -382,7 +384,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         stateOfDeleting.addProperty("state", "done");
         stateOfDeleting.addProperty("Tweet", text);
         listOfResponses.add(stateOfDeleting);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("deleteTweet",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void replyLines(String username, JsonElement jsonElement, String text, FileWriter logWriter, Tweet tweet, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TweetingServiceImpl tweetingService = new TweetingServiceImpl();
@@ -420,7 +422,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         stateOfReplying.addProperty("Tweet", text);
         stateOfReplying.addProperty("reply", reply);
         listOfResponses.add(stateOfReplying);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("reply",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void showTweetsOfLines(String username, JsonElement jsonElement, ArrayList<Tweet> showedTweets, FileWriter logWriter, Gson gson, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TimelineServiceImpl timelineService = new TimelineServiceImpl();
@@ -463,7 +465,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         for (Tweet twt : showedTweets) {
             listOfResponses.add((JsonObject) gson.toJsonTree(twt));
         }
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("showTweetsOf",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void timelineLines(String username, JsonElement jsonElement, ArrayList<Tweet> timeLine, FileWriter logWriter, Gson gson, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TimelineServiceImpl timelineService = new TimelineServiceImpl();
@@ -498,7 +500,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         for (Tweet twt : timeLine) {
             listOfResponses.add((JsonObject) gson.toJsonTree(twt));
         }
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("timeline",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void followLines(String username, JsonElement jsonElement, boolean operationOfMethods, FileWriter logWriter, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         ObserverServiceImpl observerService = new ObserverServiceImpl();
@@ -543,7 +545,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         JsonObject stateOfFollowing = new JsonObject();   // state of whether follow operation is executed or not
         stateOfFollowing.addProperty("state", "done");
         listOfResponses.add(stateOfFollowing);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("follow",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void unfollowLines(String username, JsonElement jsonElement, boolean operationOfMethods, FileWriter logWriter, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         ObserverServiceImpl observerService = new ObserverServiceImpl();
@@ -588,7 +590,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         JsonObject stateOfUnfollowing = new JsonObject();   // state of whether unfollow operation is executed or not
         stateOfUnfollowing.addProperty("state", "done");
         listOfResponses.add(stateOfUnfollowing);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("unfollow",hasError, errorCode, responseJsonObject, listOfResponses);
     }
     private void likeLines(String username, JsonElement jsonElement, String text, FileWriter logWriter, Tweet tweet, Account account, ArrayList<JsonObject> listOfResponses, JsonObject responseJsonObject) throws IOException {
         TweetingServiceImpl tweetingService = new TweetingServiceImpl();
@@ -624,7 +626,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         stateOfLiking.addProperty("state", "done");
         stateOfLiking.addProperty("Tweet", text);
         listOfResponses.add(stateOfLiking);
-        errorAndResultSetter(hasError, errorCode, responseJsonObject, listOfResponses);
+        errorAndResultSetter("like",hasError, errorCode, responseJsonObject, listOfResponses);
     }
 }
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.MainViewController">
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.SignupController">
    <children>
       <StackPane>
          <children>
@@ -74,7 +74,7 @@
                   <StackPane prefWidth="329.0">
                      <children>
                         <Button id="loginButton" fx:id="logoutButton" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="54.0" text="Signup" StackPane.alignment="CENTER" />
-                        <Button id="loginButton" fx:id="logoutButton1" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" text="Back" StackPane.alignment="CENTER_LEFT" />
+                        <Button id="loginButton" fx:id="logoutButton1" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#handleBackButtonOnClicked" prefHeight="39.0" prefWidth="43.0" text="Back" StackPane.alignment="CENTER_LEFT" />
                      </children>
                   </StackPane>
                </children>

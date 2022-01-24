@@ -1,5 +1,7 @@
 package com.interfaces;
 
+import org.json.simple.JSONObject;
+
 public interface CommandParserService {
-    String commandParser();
+    String commandParser(JSONObject jsonObjectb);
 }

@@ -18,85 +18,20 @@ import java.util.Scanner;
  * @version 0.0
  */
 public class CommandParserServiceImpl implements CommandParserService {
-    static Scanner scanner = new Scanner(System.in);
     private static FileWriter file;
     private String name;   // name of file
     private static int fileNumber = 0;   // the number of files ( we can create more than one request file)
+
+    public String getName() {
+        return name;
+    }
 
     /**
      * commandParserService method will start a long switch case operation to get information from user
      *
      * @return the name of json file as a request
      */
-    public String commandParser() {
-        JSONObject objMethod = new JSONObject();
-        JSONArray value = new JSONArray();
-        System.out.println("""
-                Enter the method you want to run :\s
-                 1-sign up\s
-                 2-login\s
-                 3-add tweet\s
-                 4-show tweet of\s
-                 5-timeline\s
-                 6-delete tweet\s
-                 7-like\s
-                 8-reply\s
-                9-follow\s
-                10-unfollow\s
-                """);
-        String method = scanner.nextLine();
-        String username = "";
-        String password = "";
-        String text = "";
-        switch (method) {
-            case "1" ->   // signup
-                    signupLines(objMethod,
-                            username,
-                            value,
-                            password);
-            case "2" ->   // login
-                    loginLines(objMethod,
-                            username,
-                            value,
-                            password);
-            case "3" -> // send a tweet
-                    sendTweetLines(objMethod,
-                            username,
-                            value,
-                            text);
-            case "4" ->  // show tweets.ap of a user
-                    showTweetsOfLines(objMethod,
-                            username,
-                            value);
-            case "5" ->   // show timeline of the user
-                    timelineLines(objMethod,
-                            username,
-                            value);
-            case "6" ->  // delete a tweet
-                    deleteTweetLines(objMethod,
-                            username,
-                            value,
-                            text);
-            case "7" ->  // like a tweet
-                    likeLines(objMethod,
-                            username,
-                            value,
-                            text);
-            case "8" ->  // reply
-                    replyLines(objMethod,
-                            username,
-                            value,
-                            text);
-            case "9" ->  // follow
-                    followLines(objMethod,
-                            username,
-                            value);
-            case "10" ->  // unfollow
-                    unfollowLines(objMethod,
-                            username,
-                            value);
-            default -> throw new IllegalStateException("Unexpected value, try again ");
-        }
+    public String commandParser(JSONObject objMethod) {
         // store taken inputs to a json file :
         try {
             // constructs a FileWriter given a file name
@@ -118,145 +53,227 @@ public class CommandParserServiceImpl implements CommandParserService {
         }
         return name;
     }
-    private void signupLines(JSONObject objMethod, String username, JSONArray value, String password) {
+
+    /**
+     * signup json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param objMethod method of json request
+     * @param username username
+     * @param value array that contains value of json request
+     * @param password password
+     * @param firstName firstName
+     * @param lastName lastName
+     * @param birth birthdate
+     * @param bio bio
+     * @return name of request file
+     */
+    public String signupLines(JSONObject objMethod, String username, JSONArray value, String password,
+                             String firstName,
+                             String lastName,
+                             String birth,
+                             String bio) {
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "signup");
-        System.out.println("signup :");
-        System.out.println("first name :");
-        String firstName = scanner.nextLine();
         jsonObjectTemp.put("firstName", firstName);
-        System.out.println("last name :");
-        String lastName = scanner.nextLine();
         jsonObjectTemp.put("lastName", lastName);
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("password :");
-        password = scanner.nextLine();
         jsonObjectTemp.put("password", password);
-        System.out.println("bio :");
-        String bio = scanner.nextLine();
         jsonObjectTemp.put("bio", bio);
-        System.out.println("birth date :");
-        LocalDate birthDate = LocalDate.parse(scanner.nextLine());
+        LocalDate birthDate = LocalDate.parse(birth);
         jsonObjectTemp.put("birthDate", birthDate);
         LocalDate registrationDate = LocalDate.now();
         jsonObjectTemp.put("registrationDate", registrationDate);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void loginLines(JSONObject objMethod, String username, JSONArray value, String password) {
+
+    /**
+     * login json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param password password
+     * @return name of request file
+     */
+    public String loginLines(String username, String password) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "login");
-        System.out.println("login :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("password :");
-        password = scanner.nextLine();
         jsonObjectTemp.put("password", password);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void sendTweetLines(JSONObject objMethod, String username, JSONArray value, String text) {
+
+    /**
+     * send tweet json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param text text of tweet
+     * @return name of request file
+     */
+    public String sendTweetLines(String username, String text) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "sendTweet");
-        System.out.println("tweet :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("text of tweet :");
-        text = scanner.nextLine();
         jsonObjectTemp.put("text", text);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void showTweetsOfLines(JSONObject objMethod, String username, JSONArray value) {
+
+    /** show tweetOf json creator
+     *
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @return name of request file
+     */
+    public String showTweetsOfLines(String username) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "showTweetsOf");
-        System.out.println("show tweet of :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void timelineLines(JSONObject objMethod, String username, JSONArray value) {
+
+    /**
+     * timeline json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @return name of request file
+     */
+    public String timelineLines(String username) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "timeline");
-        System.out.println("timeline :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void deleteTweetLines(JSONObject objMethod, String username, JSONArray value, String text) {
+
+    /**
+     * delete tweet json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param text text of tweet
+     * @return name of request file
+     */
+    public String deleteTweetLines(String username, String text) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "deleteTweet");
-        System.out.println("delete tweet :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("text of tweet :");
-        text = scanner.nextLine();
         jsonObjectTemp.put("text", text);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void replyLines(JSONObject objMethod, String username, JSONArray value, String text) {
+
+    /**
+     * reply json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param text text of tweet
+     * @param reply text of reply
+     * @return name of request file
+     */
+    public String replyLines(String username, String text, String reply) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "reply");
-        System.out.println("reply :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("text of tweet :");
-        text = scanner.nextLine();
         jsonObjectTemp.put("text", text);
-        System.out.println("text of reply :");
-        String reply = scanner.nextLine();
         jsonObjectTemp.put("reply", reply);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void followLines(JSONObject objMethod, String username, JSONArray value) {
+
+    /**
+     * follow json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param usernameFollowed user that will be followed
+     * @return name of request file
+     */
+    public String followLines(String username, String usernameFollowed) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "follow");
-        System.out.println("follow :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("username that must be followed :");
-        String usernameFollowed = scanner.nextLine();
         jsonObjectTemp.put("usernameFollowed", usernameFollowed);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void unfollowLines(JSONObject objMethod, String username, JSONArray value) {
+
+    /**
+     * unfollow json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username
+     * @param usernameUnfollowed user that will be unfollowed
+     * @return name of request file
+     */
+    public String unfollowLines(String username, String usernameUnfollowed) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "unfollow");
-        System.out.println("unfollow :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("username that must be unfollowed :");
-        String usernameUnfollowed = scanner.nextLine();
         jsonObjectTemp.put("usernameFollowed", usernameUnfollowed);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
-    private void likeLines(JSONObject objMethod, String username, JSONArray value, String text) {
+
+    /**
+     * like json creator
+     *
+     * objMethod = method of json request
+     * value = array that contains value of json request
+     * @param username username
+     * @param text text of tweet
+     * @return name of request file
+     */
+    public String likeLines(String username, String text) {
+        JSONObject objMethod = new JSONObject();
+        JSONArray value = new JSONArray();
         JSONObject jsonObjectTemp = new JSONObject();
         objMethod.put("method", "like");
-        System.out.println("like tweet :");
-        System.out.println("username :");
-        username = scanner.nextLine();
         jsonObjectTemp.put("username", username);
-        System.out.println("text of tweet :");
-        text = scanner.nextLine();
         jsonObjectTemp.put("text", text);
         value.add(jsonObjectTemp);
         objMethod.put("parameterValue", value);
+        return commandParser(objMethod);
     }
 }

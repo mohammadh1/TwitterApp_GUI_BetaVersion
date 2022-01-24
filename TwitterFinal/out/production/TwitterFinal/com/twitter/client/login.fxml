@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.LoginController">
     <children>
         <StackPane>
             <children>
@@ -40,8 +40,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                                <TextField fx:id="user" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;open&quot; to login" text="open" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <TextField fx:id="password" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;sesame&quot; to login" text="sesame" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <TextField fx:id="user" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;open&quot; to login" text="mohammadh1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="password" prefHeight="36.0" prefWidth="220.0" promptText="Use &quot;sesame&quot; to login" text="Maha1379" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="121.0" />
@@ -57,12 +57,12 @@
                         </GridPane>
                   <StackPane prefHeight="83.0" prefWidth="580.0">
                      <children>
-                        <Button fx:id="loginButton1" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="52.0" prefWidth="83.0" text="Login" />
+                        <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleLoginButtonOnClicked" prefHeight="52.0" prefWidth="83.0" text="Login" />
                      </children>
                   </StackPane>
                   <Pane prefHeight="50.0" prefWidth="580.0">
                      <children>
-                        <Button fx:id="loginButton11" alignment="CENTER" defaultButton="true" layoutX="366.0" layoutY="7.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="83.0" text="Signup" />
+                        <Button fx:id="signupButton" alignment="CENTER" defaultButton="true" layoutX="366.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleSignupButtonOnClicked" prefHeight="18.0" prefWidth="83.0" text="Signup" />
                         <TextFlow layoutX="127.0" layoutY="9.0" prefHeight="25.0" prefWidth="232.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="if you don't have an account already please" wrappingWidth="218.578125" />

@@ -36,7 +36,7 @@ public class LoginManager {
             scene.setRoot(loader.load());
             LoginController loginController =
                     loader.getController();
-            loginController.initManager(this);
+            //loginController.initManagerLogin(this);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,4 +53,17 @@ public class LoginManager {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void showSignupScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+            scene.setRoot(loader.load());
+            SignupController signupController =
+                    loader.getController();
+            //signupController.initManager(this);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
 }
