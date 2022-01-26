@@ -1,18 +1,21 @@
 package com.implementation;
 
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.interfaces.ConsoleViewService;
+import com.tools.LocalDateDeserializer;
+import com.tools.LocalDateSerializer;
+import com.tools.LocalDateTimeDeserializer;
+import com.tools.LocalDateTimeSerializer;
 import com.twitter.server.Tweet;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,6 +29,7 @@ import java.util.Iterator;
  */
 public class ConsoleViewServiceImpl implements ConsoleViewService {
     private Gson gson;
+    private Gson gsonBuilder;
     private Object object;
     /*public void terminalStart(File file) {
         Gson gson = new Gson();
@@ -59,7 +63,13 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
     }*/
 
     public ConsoleViewServiceImpl() {
-        gson = new Gson();
+        this.gson = new Gson();
+        this.gsonBuilder =new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateDeserializer())
+                .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
+                .registerTypeAdapter(LocalDateTime.class,new LocalDateTimeSerializer())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
+                .create();
     }
 
     public Object terminalStart(File file) {
@@ -69,11 +79,11 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
             switch (method) {
                 case "login" -> login(file);
                 case "signup" -> signup(file);
-                case "timeline" -> timeline();
-                case "showTweetsOf" -> showTweetOfPerson();
-                case "like" -> like();
-                case "follow" -> follow();
-                case "unfollow" -> unfollow();
+                case "timeline" -> timeline(file);
+                case "showTweetsOf" -> showTweetOfPerson(file);
+                case "like" -> like(file);
+                case "follow" -> follow(file);
+                case "unfollow" -> unfollow(file);
                 default -> object= null;
             }
         } catch (FileNotFoundException e) {
@@ -121,19 +131,48 @@ public class ConsoleViewServiceImpl implements ConsoleViewService {
         }
         return flag;
     }
-    public ArrayList<Tweet> timeline(){
+    public String timeline(File file){
+        ArrayList<Tweet> timelineTweets = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (file.length() != 0) {
+            try (JsonReader jsonReader = gson.newJsonReader(new FileReader(file))) {
+                JsonObject jsonObj = gson.fromJson(jsonReader, JsonObject.class);
+                boolean errorState = jsonObj.get("hasError").getAsBoolean();
+                if (!errorState) {
+                    JsonArray result = jsonObj.get("result").getAsJsonArray();
+                    Iterator<JsonElement> iterator = result.iterator();
+                    int countInternal = result.size();
+                    for (int i = 0; i < countInternal; i++) {
+                        JsonElement element = iterator.next();
+                        String sender = element.getAsJsonObject().get("sender").getAsJsonObject().get("username").getAsString();
+                        String text = element.getAsJsonObject().get("text").getAsString();
+                        stringBuilder.append(sender + " : ");
+                        stringBuilder.append(System.lineSeparator());
+                        stringBuilder.append(text);
+                        stringBuilder.append(System.lineSeparator());
+                        stringBuilder.append(System.lineSeparator());
+                    }
+                }
+                else {
+                    stringBuilder.append("");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        String string = String.valueOf(stringBuilder);
+        return string;
+    }
+    public ArrayList<Tweet> showTweetOfPerson(File file){
         return null;
     }
-    public ArrayList<Tweet> showTweetOfPerson(){
-        return null;
-    }
-    public Boolean like(){
+    public Boolean like(File file){
         return true;
     }
-    public Boolean follow(){
+    public Boolean follow(File file){
         return true;
     }
-    public Boolean unfollow(){
+    public Boolean unfollow(File file){
         return true;
     }
 

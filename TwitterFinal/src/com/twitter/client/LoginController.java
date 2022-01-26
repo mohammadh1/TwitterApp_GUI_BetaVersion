@@ -45,6 +45,7 @@ public class LoginController {
             Object object = connectionService.ConnectionServ();
             if (object instanceof Boolean) {
                 if (object.equals(true)) {
+                    Client.setUsername(username);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
                     Parent root = loader.load();
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

@@ -493,7 +493,7 @@ public class RequestParserServiceImpl implements RequestParserService{
             System.err.println("username has not logged in");
             errorCode = 8;
             hasError = true;
-            logger.info("showTweetsOf failed");
+            logger.info("timeline failed");
             logWriter.write("[error]" + username + "-wrong inputs" + "\n");
         }
         // creates json object and json file :

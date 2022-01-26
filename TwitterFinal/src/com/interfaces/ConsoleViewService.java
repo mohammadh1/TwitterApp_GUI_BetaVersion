@@ -9,9 +9,9 @@ public interface ConsoleViewService {
     //void terminalStart(File file);
     Boolean login(File file);
     Boolean signup(File file);
-    ArrayList<Tweet> timeline();
-    ArrayList<Tweet> showTweetOfPerson();
-    Boolean like();
-    Boolean follow();
-    Boolean unfollow();
+    String timeline(File file);
+    ArrayList<Tweet> showTweetOfPerson(File file);
+    Boolean like(File file);
+    Boolean follow(File file);
+    Boolean unfollow(File file);
 }

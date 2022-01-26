@@ -1,1 +1,1 @@
-{"method":"signup","hasError":false,"errorCode":0,"result":[{"state":"done"}]}
+{"method":"login","hasError":true,"errorCode":2,"result":[{"state":"done"}]}

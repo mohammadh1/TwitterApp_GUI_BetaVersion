@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @version 0.0
  */
 public class Client {
-    private String username;
+    public static String username;
     public static int port;
     public static String ip;
 
@@ -78,12 +78,9 @@ public class Client {
         return path;
     }*/
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public static void setUsername(String username) {
+        Client.username = username;
     }
 
     /*public static void main(String args[])

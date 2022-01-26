@@ -15,30 +15,29 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.ProfileController">
    <children>
-      <MenuBar opacity="0.71" prefHeight="40.0" prefWidth="600.0">
+      <MenuBar fx:id="menuBar" opacity="0.71" prefHeight="40.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Application">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Logout" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonOnClicked" text="Logout" />
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#handleExitButtonOnClicked" text="Exit" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Option">
                <items>
-                  <MenuItem mnemonicParsing="false" text="System tray when closing" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                  <MenuItem fx:id="systemTrayButton" mnemonicParsing="false" onAction="#handleTrayButtonOnClicked" text="System tray when closing" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="View">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Dark" />
-                  <MenuItem mnemonicParsing="false" text="Light" />
+                  <MenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#handleDarkButtonOnClicked" text="Dark" />
+                  <MenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#handleLightButtonOnClicked" text="Light" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Help" />
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButtonOnClicked" text="Help" />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#handleAboutButtonOnClicked" text="About" />
                </items>
             </Menu>
          </menus>
@@ -85,15 +84,15 @@
                   </Button>
                </children>
             </HBox>
-            <TextArea layoutY="60.0" prefHeight="207.0" prefWidth="600.0" />
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="235.13671875">
+            <TextArea fx:id="profileTextArea" layoutY="60.0" prefHeight="207.0" prefWidth="600.0" />
+            <Text fx:id="nameOfAccount" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="235.13671875">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextArea layoutX="300.0" layoutY="5.0" prefHeight="45.0" prefWidth="287.0" text="bio&#10;" />
+            <TextArea fx:id="bioOfAccount" layoutX="300.0" layoutY="5.0" prefHeight="45.0" prefWidth="287.0" text="bio&#10;" />
             <Line endX="-0.13671875" endY="-28.0" layoutX="292.0" layoutY="34.0" startX="-0.13671875" startY="16.0" />
-            <Text layoutX="35.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@user" wrappingWidth="235.13671875">
+            <Text fx:id="usernameOfAccount" layoutX="35.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@user" wrappingWidth="235.13671875">
                <font>
                   <Font size="16.0" />
                </font>
