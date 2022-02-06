@@ -26,12 +26,15 @@ public class TimelineServiceImpl implements TimelineService {
      * @return an array list of tweets.ap that user A tweeted
      */
     public ArrayList<Tweet> showTweetsOf(Account account) {
+        ArrayList<Tweet> tweets;
         if (individualTweets.get(account).isEmpty()) {
             System.err.println("The account has not tweeted yet");
             return null;
         }
         else
-            return individualTweets.get(account);
+            tweets = individualTweets.get(account);
+            tweets.sort(Comparator.comparing(Tweet::getDate));
+            return tweets;
     }
 
     /**

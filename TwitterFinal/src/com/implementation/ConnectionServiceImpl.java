@@ -2,8 +2,6 @@ package com.implementation;
 
 
 import com.interfaces.ConnectionService;
-import com.interfaces.ConsoleViewService;
-import com.twitter.client.Client;
 
 import java.io.*;
 import java.net.Socket;
@@ -17,10 +15,18 @@ import java.net.SocketException;
  */
 public class ConnectionServiceImpl implements ConnectionService {
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static int fileNumber = 0 ;
+    private Object object;
+    private int port;
+    private String address;
+    private File file;
+
+    public ConnectionServiceImpl(String address, int port, File file) {
+        this.address = address;
+        this.port = port;
+        this.file = file;
+    }
 
     /**
      * description of first operation (sending request)
@@ -31,18 +37,16 @@ public class ConnectionServiceImpl implements ConnectionService {
      * 4- ConnectionService receives some data over dataInputStream
      * 5- ConnectionService writes received data on a json file as response
      * 6- print a "done" string to make sure none of streams are stuck or whatever that stops the process
-     *
-     * @param address address of socket
-     * @param port    port of socket
      */
-    public ConnectionServiceImpl(String address, int port, File file) {
+
+    public Object ConnectionServ() {
         try (Socket socket = new Socket(address, port)) {
-            new Client();
-            socket.setReuseAddress(true);
-            File requestFile = new File(String.valueOf(Client.getPath()));
+            //new Client();
+            //socket.setReuseAddress(true);
+            File requestFile = new File(String.valueOf(file));
             DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./files/Response/ResponseServerCopy.json"));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./files/Response/ResponseServerCopy-" + fileNumber + ".json"));
             BufferedReader bufferedReader = new BufferedReader(new FileReader(requestFile));
             //---------------------------------
             //first operation
@@ -64,13 +68,15 @@ public class ConnectionServiceImpl implements ConnectionService {
             dataInputStream.close();
             //---------------------------------
             ConsoleViewServiceImpl consoleViewService = new ConsoleViewServiceImpl();
-            consoleViewService.terminalStart(new File("./files/Response/ResponseServerCopy.json"));
+            object = consoleViewService.terminalStart(new File("./files/Response/ResponseServerCopy-" + fileNumber + ".json"));
+
             System.out.println("connection service process is done");
             System.out.println(ANSI_YELLOW +
                     "###########################################\n" +
                     "              END OF THIS PROCESS          \n" +
                     "###########################################\n" +
                     ANSI_RESET);
+            fileNumber++;
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -78,5 +84,6 @@ public class ConnectionServiceImpl implements ConnectionService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return object;
     }
 }

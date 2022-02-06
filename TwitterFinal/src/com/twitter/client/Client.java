@@ -21,16 +21,21 @@ import java.util.Scanner;
  * @version 0.0
  */
 public class Client {
-    static Scanner scanner = new Scanner(System.in);
+    public static String username;
+    public static int port;
+    public static String ip;
+
     // path of file if user give that :
-    private static Path path;
+    //private static Path path;
+
 
     /**
      * instantiate a new client
      * user can decide to write a json on their own or give a location of json file
      */
     public Client() {
-        boolean flag = true;
+        // first implementation for terminal
+        /*boolean flag = true;
         while (flag) {
             System.out.println("welcome to twitter, you are able to give a file as a request or create a file for request");
             System.out.println("1-requestFile location \n2-create requestFile \nexit");
@@ -52,21 +57,7 @@ public class Client {
                     flag = false;
                     break;
             }
-        }
-    }
-
-    /**
-     * when we want the path of file that user enter for json request
-     *
-     * @return path of json file
-     */
-    public static Path getPath() {
-        return path;
-    }
-    public static void main(String args[])
-    {
-        int port = 0;
-        String ip = "";
+        }*/
         try (FileReader fileReader = new FileReader("./src/com/resources/client-application.properties")) {
             Properties properties = new Properties();
             properties.load(fileReader);
@@ -77,7 +68,26 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ConnectionServiceImpl connectionService = new ConnectionServiceImpl(ip, port, new File(String.valueOf(path)));  // start connection
     }
+    /*/**
+     * when we want the path of file that user enter for json request
+     *
+     * @return path of json file
+     */
+    /*public static Path getPath() {
+        return path;
+    }*/
+
+
+    public static void setUsername(String username) {
+        Client.username = username;
+    }
+
+    /*public static void main(String args[])
+    {
+
+        // start connection
+        //ConnectionServiceImpl connectionService = new ConnectionServiceImpl(ip, port, new File(String.valueOf(path)));
+    }*/
 }
 

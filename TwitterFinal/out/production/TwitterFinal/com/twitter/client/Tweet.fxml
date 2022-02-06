@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.TweetController">
+   <children>
+      <MenuBar fx:id="menuBar" opacity="0.71" prefHeight="40.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Application">
+               <items>
+                  <MenuItem fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonOnClicked" text="Logout" />
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#handleExitButtonOnClicked" text="Exit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Option">
+               <items>
+                  <MenuItem fx:id="systemTrayButton" mnemonicParsing="false" onAction="#handleTrayButtonOnClicked" text="System tray when closing" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#handleDarkButtonOnClicked" text="Dark" />
+                  <MenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#handleLightButtonOnClicked" text="Light" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButtonOnClicked" text="Help" />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#handleAboutButtonOnClicked" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="247.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tweet" textAlignment="CENTER" wrappingWidth="105.13671875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="12.0" layoutY="5.0" prefHeight="303.0" prefWidth="575.0">
+               <children>
+                  <Button fx:id="sendButton" layoutX="255.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleSendButtonOnClicked" prefHeight="40.0" prefWidth="64.0" text="Send" />
+                  <TextArea fx:id="tweetTextArea" layoutX="18.0" layoutY="32.0" prefHeight="170.0" prefWidth="538.0" />
+                  <Text layoutX="157.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="260.13671875" />
+               </children>
+            </AnchorPane>
+            <HBox layoutY="331.0" prefHeight="44.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="profileButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleProfileButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Profile">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="timelineButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTimelineButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Timeline">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tweetButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTweetButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Tweet">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="refreshButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleRefreshButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Refresh">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

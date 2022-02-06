@@ -18,6 +18,7 @@ public class SessionServiceImpl implements Runnable{
     private Account currentAcc;
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
+    public static int fileNumber = 0;
 
     /**
      * constructor of Session class
@@ -45,7 +46,7 @@ public class SessionServiceImpl implements Runnable{
         BufferedWriter bufferedWriter;
         BufferedReader bufferedReader;
         try {
-                bufferedWriter = new BufferedWriter(new FileWriter("./files/Request/RequestClientCopy.json"));
+                bufferedWriter = new BufferedWriter(new FileWriter("./files/Request/RequestClientCopy-" + fileNumber + ".json"));
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 dataInputStream = new DataInputStream(socket.getInputStream());
                 //---------------------------------
@@ -56,7 +57,7 @@ public class SessionServiceImpl implements Runnable{
                 bufferedWriter.close();
                 //---------------------------------
                 RequestParserServiceImpl requestParserService = new RequestParserServiceImpl();
-                File fileResponse = requestParserService.requestParse(new File("./files/Request/RequestClientCopy.json"));
+                File fileResponse = requestParserService.requestParse(new File("./files/Request/RequestClientCopy-" + fileNumber + ".json"));
                 bufferedReader = new BufferedReader(new FileReader(fileResponse));
                 //---------------------------------
                 //second operation
@@ -69,6 +70,7 @@ public class SessionServiceImpl implements Runnable{
                 bufferedReader.close();
             dataOutputStream.close();
             dataInputStream.close();
+            fileNumber++;
         } catch (IOException e) {
             e.printStackTrace();
         }

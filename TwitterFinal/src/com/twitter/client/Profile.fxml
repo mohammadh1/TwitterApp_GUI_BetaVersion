@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.ProfileController">
+   <children>
+      <MenuBar fx:id="menuBar" opacity="0.71" prefHeight="40.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Application">
+               <items>
+                  <MenuItem fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonOnClicked" text="Logout" />
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#handleExitButtonOnClicked" text="Exit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Option">
+               <items>
+                  <MenuItem fx:id="systemTrayButton" mnemonicParsing="false" onAction="#handleTrayButtonOnClicked" text="System tray when closing" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#handleDarkButtonOnClicked" text="Dark" />
+                  <MenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#handleLightButtonOnClicked" text="Light" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButtonOnClicked" text="Help" />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#handleAboutButtonOnClicked" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" textAlignment="CENTER" wrappingWidth="600.13671875">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <AnchorPane prefHeight="38.0" prefWidth="600.0">
+         <children>
+            <TextField layoutX="79.0" layoutY="2.0" />
+            <Text layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search :" textAlignment="CENTER" wrappingWidth="73.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Line endX="586.86328125" endY="34.0" startX="12.86328125" startY="34.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="368.0" prefWidth="600.0">
+         <children>
+            <HBox layoutY="266.0" prefHeight="44.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="profileButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleProfileButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Profile">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="timelineButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTimelineButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Timeline">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tweetButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleTweetButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Tweet">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="refreshButton" minWidth="0.0" mnemonicParsing="false" onAction="#handleRefreshButtonOnClicked" prefHeight="43.0" prefWidth="150.0" text="Refresh">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <TextArea fx:id="profileTextArea" layoutY="60.0" prefHeight="207.0" prefWidth="600.0" />
+            <Text fx:id="nameOfAccount" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="235.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="bioOfAccount" layoutX="300.0" layoutY="5.0" prefHeight="45.0" prefWidth="287.0" text="bio&#10;" />
+            <Line endX="-0.13671875" endY="-28.0" layoutX="292.0" layoutY="34.0" startX="-0.13671875" startY="16.0" />
+            <Text fx:id="usernameOfAccount" layoutX="35.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@user" wrappingWidth="235.13671875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
