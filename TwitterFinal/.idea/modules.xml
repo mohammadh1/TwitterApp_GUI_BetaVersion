@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TwitterFinal.iml" filepath="$PROJECT_DIR$/TwitterFinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accounts.iml" filepath="$PROJECT_DIR$/accounts.iml" />
     </modules>
   </component>
-  <properties>
-    <argLine>java --add-opens java.base/java.time=ALL-UNNAMED</argLine>
-  </properties>
 </project>

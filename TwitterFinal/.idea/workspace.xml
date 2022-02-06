@@ -111,14 +111,14 @@
   <component name="RunManager" selected="Application.AppUI">
     <configuration name="AppUI 2" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.twitter.client.AppUI" />
-      <module name="TwitterFinal" />
+      <module name="accounts" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="AppUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twitter.client.AppUI" />
-      <module name="TwitterFinal" />
+      <module name="accounts" />
       <option name="PROGRAM_PARAMETERS" value="username " />
       <extension name="coverage">
         <pattern>
@@ -132,7 +132,7 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.twitter.Main" />
-      <module name="TwitterFinal" />
+      <module name="accounts" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -143,7 +143,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.twitter.server.Server" />
-      <module name="TwitterFinal" />
+      <module name="accounts" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

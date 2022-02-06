@@ -23,7 +23,7 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="Option">
                <items>
-                  <MenuItem fx:id="maximizeButton" mnemonicParsing="false" onAction="#handleMaximizeButtonOnClicked" text="maximize" />
+                  <MenuItem fx:id="maximizeButton" mnemonicParsing="false" onAction="#handleMaximizeButtonOnClicked" text="Maximize" />
                </items></Menu>
             <Menu mnemonicParsing="false" text="View">
                <items>
@@ -46,7 +46,7 @@
             </Text>
             <AnchorPane layoutX="13.0" layoutY="20.0" prefHeight="268.0" prefWidth="575.0">
                <children>
-                  <TextArea fx:id="timelineTextArea" layoutY="14.0" prefHeight="297.0" prefWidth="567.0" />
+                  <TextArea fx:id="timelineTextArea" layoutY="14.0" prefHeight="297.0" prefWidth="567.0" style="-fx-background-color: black;" />
                   <ScrollBar layoutX="570.0" layoutY="14.0" orientation="VERTICAL" prefHeight="297.0" prefWidth="7.0" />
                </children>
             </AnchorPane>

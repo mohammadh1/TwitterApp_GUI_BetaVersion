@@ -324,7 +324,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         text = jsonElement.getAsJsonObject().get("text").getAsString();
         account = findAccount(username);
         // sees if tweet is for current username
-        if (!account.equals(null) && loginState.get(username).equals(true)) {
+        if (account != null && loginState.get(username).equals(true)) {
             tweetingService.tweeting(new Tweet(account, text));
             hasError = false;
             errorCode = 0;
@@ -360,7 +360,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         text = jsonElement.getAsJsonObject().get("text").getAsString();
         tweet = findTweet(username, text);
         account = findAccount(username);
-        if (!tweet.equals(null) && loginState.get(username).equals(true)) {
+        if (tweet != null && loginState.get(username).equals(true)) {
             tweetingService.deleting(new Tweet(account, text));
             hasError = false;
             errorCode = 0;
@@ -397,7 +397,7 @@ public class RequestParserServiceImpl implements RequestParserService{
         String reply = jsonElement.getAsJsonObject().get("reply").getAsString();
         tweet = findTweet(username, text);
         account = findAccount(username);
-        if (!tweet.equals(null) && loginState.get(username).equals(true)) {
+        if (tweet != null && loginState.get(username).equals(true)) {
             tweetingService.replying(new Tweet(account, text), new Reply(findAccount(username), reply, LocalDateTime.now(), 0, 0));
             hasError = false;
             errorCode = 0;

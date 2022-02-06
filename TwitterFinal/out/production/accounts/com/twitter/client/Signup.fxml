@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.twitter.client.SignupController">
+   <children>
+      <StackPane>
+         <children>
+            <VBox spacing="10.0">
+               <children>
+                  <GridPane prefHeight="332.0" prefWidth="580.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="66.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="160.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="189.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="189.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Firstname" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Bio" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="BirthDate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Username" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Lastname" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstnameTextField" GridPane.columnIndex="2" />
+                        <TextField fx:id="birthTextField" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets bottom="15.0" />
+                           </GridPane.margin></TextField>
+                        <TextField fx:id="passwordTextField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="usernameTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="lastnameTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextArea fx:id="bioTextArea" prefHeight="208.0" prefWidth="342.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+                  <StackPane prefWidth="329.0">
+                     <children>
+                        <Button id="loginButton" fx:id="signupButton" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#handleSignupButtonOnClicked" prefHeight="39.0" prefWidth="54.0" text="Signup" StackPane.alignment="CENTER" />
+                        <Button id="loginButton" fx:id="back" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#handleBackButtonOnClicked" prefHeight="39.0" prefWidth="43.0" text="Back" StackPane.alignment="CENTER_LEFT" />
+                        <Text fx:id="textBoxForMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="166.13671875" StackPane.alignment="CENTER_RIGHT" />
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</StackPane>

@@ -2,10 +2,12 @@ package com.implementation;
 
 import com.interfaces.ObserverService;
 import com.twitter.server.Account;
+import com.twitter.server.LoadingFiles;
 
 import java.util.ArrayList;
 
-import static com.twitter.server.LoadingFiles.followingList;
+import static com.twitter.server.LoadingFiles.*;
+import static com.twitter.server.LoadingFiles.loadingFollowingList;
 
 /**
  * follow and unfollow people
@@ -21,6 +23,10 @@ public class ObserverServiceImpl implements ObserverService {
      * @return boolean that shows whether operation is successful or not
      */
     public boolean follow(Account doer, Account target) {
+        new LoadingFiles();
+        loadingAccounts();
+        loadingTweets();
+        loadingFollowingList();
         if (doer.getFollowing() == 0) {
             followingList.put(doer.getUsername(), new ArrayList<>());
             followingList.get(doer.getUsername()).add(target.getUsername());
@@ -41,14 +47,15 @@ public class ObserverServiceImpl implements ObserverService {
      * @return boolean that shows whether operation is successful or not
      */
     public boolean unfollow(Account doer, Account target) {
-        if (followingList.get(doer).contains(target.getUsername())) {
+        if (doer.getFollowing() != 0) {
             followingList.get(doer.getUsername()).remove(target.getUsername());
             doer.setFollowing(doer.getFollowing() - 1);
             return true;
         }
-        else
+        else {
             System.err.println("You have not followed this account yet");
-        return false;
+            return false;
+        }
     }
 }
 

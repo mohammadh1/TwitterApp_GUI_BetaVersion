@@ -3,13 +3,13 @@ package com.implementation;
 
 import com.interfaces.TimelineService;
 import com.twitter.server.Account;
+import com.twitter.server.LoadingFiles;
 import com.twitter.server.Tweet;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import static com.twitter.server.LoadingFiles.followingList;
-import static com.twitter.server.LoadingFiles.individualTweets;
+import static com.twitter.server.LoadingFiles.*;
 
 /**
  * timeline class
@@ -98,13 +98,23 @@ public class TimelineServiceImpl implements TimelineService {
      */
     private ArrayList<Tweet> getTweets(Account account) {
         ArrayList<Tweet> timeLine = new ArrayList<>();
-        for (String followingUser : followingList.get(account.getUsername())) {
-            for (Tweet tweet : individualTweets.get(followingUser)) {
-                timeLine.add(tweet);
-            }
+        if (followingList.equals(null)) {
+            new LoadingFiles();
+            loadingTweets();
+            loadingAccounts();
+            loadingFollowingList();
         }
-        timeLine.sort(Comparator.comparing(Tweet::getDate));
-        return timeLine;
+        if (followingList.get(account.getUsername()) != null && followingList != null) {
+            for (String followingUser : followingList.get(account.getUsername())) {
+                for (Tweet tweet : individualTweets.get(followingUser)) {
+                    timeLine.add(tweet);
+                }
+            }
+            timeLine.sort(Comparator.comparing(Tweet::getDate));
+            return timeLine;
+        }
+        else
+            return null;
     }
 
 }

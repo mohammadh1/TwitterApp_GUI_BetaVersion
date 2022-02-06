@@ -28,7 +28,12 @@ public class SignupController {
     @FXML public TextField firstnameTextField;
     @FXML public Text textBoxForMessage;
 
-
+    /**
+     * handle the back button when clicked
+     *
+     * @param actionEvent event
+     * @throws IOException
+     */
     public void handleBackButtonOnClicked(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();
@@ -37,7 +42,12 @@ public class SignupController {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * handle the signup button when clicked
+     *
+     * @param actionEvent event
+     * @throws IOException
+     */
     public void handleSignupButtonOnClicked(ActionEvent actionEvent) throws IOException {
         if (this.usernameTextField != null && this.passwordTextField != null &&
                 this.birthTextField != null && this.lastnameTextField != null &&

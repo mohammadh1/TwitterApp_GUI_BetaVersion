@@ -25,7 +25,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Option">
                <items>
-                  <MenuItem fx:id="systemTrayButton" mnemonicParsing="false" onAction="#handleTrayButtonOnClicked" text="System tray when closing" />
+                  <MenuItem fx:id="systemMaximizeButton" mnemonicParsing="false" onAction="#handleMaximizeButtonOnClicked" text="Maximize" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="View">
@@ -49,13 +49,16 @@
       </Text>
       <AnchorPane prefHeight="38.0" prefWidth="600.0">
          <children>
-            <TextField layoutX="79.0" layoutY="2.0" />
+            <TextField fx:id="searchBar" layoutX="79.0" layoutY="2.0" />
             <Text layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search :" textAlignment="CENTER" wrappingWidth="73.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <Line endX="586.86328125" endY="34.0" startX="12.86328125" startY="34.0" />
+            <Button fx:id="followButton" layoutX="444.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleFollowButtonOnClicked" text="Follow" />
+            <Button fx:id="searchButton" layoutX="242.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleSearchButtonOnClicked" text="Search" />
+            <Button fx:id="unfollowButton" layoutX="501.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleUnFollowButtonOnClicked" text="Unfollow" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="368.0" prefWidth="600.0">

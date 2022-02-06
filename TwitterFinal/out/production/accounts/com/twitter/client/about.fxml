@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="252.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="66.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Twitter App" textAlignment="CENTER" wrappingWidth="117.13671875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="89.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beta Version" textAlignment="CENTER" wrappingWidth="73.13671875" />
+      <Text fontSmoothingType="LCD" layoutX="15.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#Developer#" textAlignment="CENTER" wrappingWidth="218.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="17.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mohammadhoseinkhani44@gmail.com" textAlignment="CENTER" wrappingWidth="218.13671875" />
+      <Text layoutX="66.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mohammad Hoseinkhani" textAlignment="CENTER" wrappingWidth="117.13671875" />
+      <Text layoutX="17.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="github.com/mohammadh1" textAlignment="CENTER" wrappingWidth="218.13671875" />
+   </children>
+</AnchorPane>

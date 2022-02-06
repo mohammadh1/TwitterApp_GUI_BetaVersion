@@ -23,7 +23,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Option">
                <items>
-                  <MenuItem fx:id="systemTrayButton" mnemonicParsing="false" onAction="#handleTrayButtonOnClicked" text="System tray when closing" />
+                  <MenuItem fx:id="maximizeButton" mnemonicParsing="false" onAction="#handleMaximizeButtonOnClicked" text="Maximize" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="View">
